@@ -33,11 +33,9 @@
             <!-- search form -->
             <form action="" method="POST">
                 <div class="input-group">
-                    <input type="text" id="input-kode" name="q" class="form-control"
-                        placeholder="Masukkan kode model..." required />
+                    <input type="text" id="input-kode" name="q" class="form-control" placeholder="Masukkan kode model..." required />
                     <span class="input-group-btn">
-                        <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i
-                                class="fa fa-search"></i></button>
+                        <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
                     </span>
                 </div>
             </form>
@@ -98,10 +96,8 @@
 </body>
 <script type="text/javascript">
     $(document).ready(function () {
-        // menampilkan semua list agenda saat pertama kali halaman utama
-        diload
-        $("#ajax_add_item").load("<?php echo
-            site_url('newitem/lihat_item_paging'); ?>");
+        // menampilkan semua list agenda saat pertama kali halaman utama diload
+        $("#ajax_add_item").load("<?php echo site_url('newitem/lihat_item_paging'); ?>");
         // melakukan proses tambah item ketika tombol ditekan
         $('#form-insert-item').submit(function () {
             $.ajax({
@@ -109,8 +105,7 @@
                 url: "<?php echo site_url('newitem/proses_item') ?>",
                 data: $(this).serialize(),
                 success: function (data) {
-                    $('#ajax_add_item').load("<?php echo
-                        site_url('newitem/lihat_item_paging') ?>");
+                    $('#ajax_add_item').load("<?php echo site_url('newitem/lihat_item_paging') ?>");
                     $('.bs-example-modal-sm').modal('hide');
                     $("#form-insert-item")[0].reset();
                     alert('success');
@@ -127,7 +122,7 @@
             $("#form-insert-item")[0].reset();
             $(".bs-example-modal-sm in-put[name = 'kd_model']").val(null).attr("readonly", false);
             $(".bs-example-modal-sm tex-tarea[name = 'deskripsi']").html(null);
-});
+        });
         $("#ajax_add_item").on("click", ".btn-edit", function () {
             const kode = $(this).attr("data-kode");
             $.ajax({
@@ -138,7 +133,6 @@
                 success: function (data) {
                     if (data.item) {
                         console.log('data : ', data.item.kd_model);
-
                         $(".bs-example-modal-sm in-put[name = 'kd_model']").val(data.item.kd_model).attr("readonly", true);
                         $(".bs-example-modal-sm in-put[name = 'nama_model']").val(data.item.nama_model);
                         $(".bs-example-modal-sm in-put[name = 'jml_produk']").val(data.item.jml_produk);

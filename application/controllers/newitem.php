@@ -8,6 +8,8 @@ class Newitem extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->model('item_model');
+        
+
     }
 
     public function index()
@@ -55,6 +57,7 @@ class Newitem extends CI_Controller
         $method = $this->input->post("method");
         $item = new stdClass();
         if ($method == 'create') {
+            $data['jml_produk'] = $this->input->post('jml_produk');
             $data['kd_model'] = $this->input->post('kd_model');
             $data['nama_model'] = $this->input->post('nama_model');
             $data['deskripsi'] = $this->input->post('deskripsi');
@@ -62,6 +65,7 @@ class Newitem extends CI_Controller
             $data['kd_model'] = $kd_model;
             $item = $data;
         } else {
+            $data['jml_produk'] = $this->input->post('jml_produk');
             $data['nama_model'] = $this->input->post('nama_model');
             $data['deskripsi'] = $this->input->post('deskripsi');
             $kd_model = $this->input->post('kd_model');
